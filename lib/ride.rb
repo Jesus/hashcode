@@ -5,4 +5,8 @@ class Ride
     @t_start = s
     @t_finish = f
   end
+
+  def distance
+    @start.distance_to @finish
+  end
 end

@@ -4,8 +4,8 @@ class Position
     @r = r
     @c = c
   end
-  
+
   def distance_to(pos)
-    return (pos.r-@r).abs + (pos.c-@c).abs 
+    (pos.r-@r).abs + (pos.c-@c).abs
   end
 end

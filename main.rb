@@ -2,6 +2,7 @@
 require './lib/map'
 require './lib/position'
 require './lib/ride'
+require './lib/vehicle'
 require './lib/input_reader'
 
 inputs = %w(
@@ -12,9 +13,14 @@ inputs = %w(
   e_high_bonus.in
 ).map { |f| "spec/fixtures/#{f}" }
 
-map, rides = InputReader.parse_file(inputs[0])
+Map.instance, rides = InputReader.parse_file(inputs[0])
 
-puts map.inspect
+vehicle_a = Vehicle.new
 rides.each do |ride|
-  puts ride.inspect
+  puts "#{ride}: #{vehicle_a.rank(ride)}"
 end
+
+# puts Map.instance.inspect
+# rides.each do |ride|
+#   puts ride.inspect
+# end
