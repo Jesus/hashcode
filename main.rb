@@ -7,19 +7,14 @@ require './lib/input_reader'
 require './util'
 
 inputs = %w(
-  a_example.in
   b_should_be_easy.in
   c_no_hurry.in
   d_metropolis.in
   e_high_bonus.in
 )
-inputs = %w(
-  a_example.in
-  b_should_be_easy.in
-)
 
-vehicles_size = 2
-rides_size = 3
+vehicles_size = 10
+rides_size = 10
 
 scores = []
 inputs.each do |input|
@@ -42,11 +37,6 @@ inputs.each do |input|
 
       vehicle_rides.sort_by { |ride, rank| rank }.reverse.take(rides_size)
     end
-
-    m.each do |vv|
-      puts "#{vv.inspect}"
-    end
-    puts ""
 
     i = 0
     max_i = m[0].length
