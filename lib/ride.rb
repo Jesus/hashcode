@@ -16,4 +16,8 @@ class Ride
   def distance
     @start.distance_to @finish
   end
+
+  def inspect
+    "R#{id}"
+  end
 end

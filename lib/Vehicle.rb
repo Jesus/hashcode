@@ -1,10 +1,12 @@
 class Vehicle
   attr_reader :t,
-              :rides
+              :rides,
+              :score
 
   def initialize
     @pos = Position.new(0, 0)
     @t = 0
+    @score = 0
     @rides = []
   end
 
@@ -16,6 +18,7 @@ class Vehicle
 
     @t = start_time + ride.distance
     @rides << ride
+    @score += ride.distance + (has_bonus ? Map.instance.bonus : 0)
   end
 
   def rank(ride)
@@ -23,11 +26,11 @@ class Vehicle
     arrival_time      = @t + distance_to_ride
     has_bonus         = arrival_time <= ride.t_start
     start_time        = has_bonus ? ride.t_start : arrival_time
+    finish_time       = start_time + ride.distance
 
-    if start_time + ride.distance > ride.t_finish
-      0
-    else
-      (ride.distance + (has_bonus ? Map.instance.bonus : 0)) / (start_time + ride.distance - @t).to_f
-    end
+    return 0 if finish_time > Map.instance.steps
+    return 0 if finish_time > ride.t_finish
+
+    (ride.distance + (has_bonus ? Map.instance.bonus : 0)) / (start_time + ride.distance - @t).to_f
   end
 end
