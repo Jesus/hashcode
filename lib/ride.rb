@@ -1,5 +1,12 @@
 class Ride
-  def initialize(a, b, x, y, s, f)
+  attr_reader :start,
+              :finish,
+              :t_start,
+              :t_finish,
+              :id
+
+  def initialize(id, a, b, x, y, s, f)
+    @id = id
     @start = Position.new(a, b)
     @finish = Position.new(x, y)
     @t_start = s
