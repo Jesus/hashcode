@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require './lib/map'
+require './lib/position'
 require './lib/ride'
 require './lib/input_reader'
 
