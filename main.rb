@@ -13,8 +13,8 @@ inputs = %w(
   e_high_bonus.in
 )
 
-vehicles_size = 10
-rides_size = 10
+vehicles_size = 20
+rides_size = 5
 
 scores = []
 inputs.each do |input|
