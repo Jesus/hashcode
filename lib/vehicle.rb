@@ -6,7 +6,7 @@ class Vehicle
   def initialize
     @pos = Position.new(0, 0)
     @t = 0
-    @score = 0
+    @score = 0.0
     @rides = []
   end
 
@@ -32,6 +32,11 @@ class Vehicle
     return 0 if finish_time > Map.instance.steps
     return 0 if finish_time > ride.t_finish
 
-    (ride.distance + (has_bonus ? Map.instance.bonus : 0)) / (start_time + ride.distance - @t).to_f
+    (ride.distance + (has_bonus ? Map.instance.bonus : 0.0)) / (start_time + ride.distance - @t).to_f
   end
+  
+  def inspect
+    "V"
+  end
+
 end
