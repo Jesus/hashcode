@@ -13,10 +13,6 @@ inputs = %w(
   d_metropolis.in
   e_high_bonus.in
 )
-inputs = %w(
-  a_example.in
-  b_should_be_easy.in
-)
 
 path_nyapa = "/home/fjburgos/programs/hashcode/"
 
