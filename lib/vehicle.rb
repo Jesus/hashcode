@@ -19,7 +19,9 @@ class Vehicle
     @t = start_time + ride.distance
     @rides << ride
     @pos = ride.finish
-    @score += ride.distance + (has_bonus ? Map.instance.bonus : 0)
+    if @t<=ride.t_finish
+      @score += ride.distance + (has_bonus ? Map.instance.bonus : 0)
+    end
   end
 
   def rank(ride)
