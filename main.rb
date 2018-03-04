@@ -4,6 +4,7 @@ require './lib/position'
 require './lib/ride'
 require './lib/vehicle'
 require './lib/input_reader'
+require './util'
 
 inputs = %w(
   a_example.in
@@ -12,7 +13,12 @@ inputs = %w(
   d_metropolis.in
   e_high_bonus.in
 )
+inputs = %w(
+  a_example.in
+  b_should_be_easy.in
+)
 
+scores = []
 inputs.each do |input|
   Map.instance, rides = InputReader.parse_file("spec/fixtures/#{input}")
   vehicles = Map.instance.vehicles.times.map { Vehicle.new }
@@ -34,4 +40,8 @@ inputs.each do |input|
       file.write("#{vehicle_rides.length} #{vehicle_rides.join(' ')}\n")
     end
   end
+  input_score = vehicles.map(&:score).sum
+  scores << input_score
+  puts "#{input}: #{input_score}"
 end
+puts "Total score: #{scores.sum}"
