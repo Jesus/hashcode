@@ -8,27 +8,27 @@ require 'lib/input_reader'
 require 'util'
 
 inputs = %w(
+  a_example.in
   b_should_be_easy.in
   c_no_hurry.in
   d_metropolis.in
   e_high_bonus.in
 )
 
-path_nyapa = "/home/fjburgos/programs/hashcode/"
+inputs = %w(
+  a_example.in
+  b_should_be_easy.in
+)
 
-vehicles_size = 20
-rides_size = 5
+path_nyapa = "/home/fjburgos/programs/hashcode/"
 
 scores = []
 inputs.each do |input|
   Map.instance, rides = InputReader.parse_file(path_nyapa + "spec/fixtures/#{input}")
-  vehicles = Map.instance.vehicles.times.map { Vehicle.new }
+  vehicles = (1..Map.instance.vehicles).map { |i| Vehicle.new(i) }
   stg = Stage.new(vehicles,rides)
 
-  loop do
-    if !stg.apply_best
-      break
-    end
+  while stg.apply_best
   end
 
   output_file = path_nyapa + "output/#{input.gsub('.in', '.o')}"

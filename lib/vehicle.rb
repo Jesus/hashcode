@@ -1,13 +1,16 @@
 class Vehicle
   attr_reader :t,
               :rides,
-              :score
+              :score,
+              :pos,
+              :id
 
-  def initialize
+  def initialize(id)
     @pos = Position.new(0, 0)
     @t = 0
     @score = 0.0
     @rides = []
+    @id=id
   end
 
   def take(ride)
@@ -36,7 +39,7 @@ class Vehicle
   end
   
   def inspect
-    "V"
+    "V#{id}"
   end
 
 end
