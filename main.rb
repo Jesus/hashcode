@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
-require './lib/map'
-require './lib/position'
-require './lib/ride'
-require './lib/vehicle'
-require './lib/input_reader'
-require './util'
+require 'lib/map'
+require 'lib/position'
+require 'lib/ride'
+require 'lib/vehicle'
+require 'lib/input_reader'
+require 'util'
 
 inputs = %w(
   a_example.in
@@ -18,9 +18,11 @@ inputs = %w(
   b_should_be_easy.in
 )
 
+path_nyapa = "/home/fjburgos/programs/hashcode/"
+
 scores = []
 inputs.each do |input|
-  Map.instance, rides = InputReader.parse_file("spec/fixtures/#{input}")
+  Map.instance, rides = InputReader.parse_file(path_nyapa + "spec/fixtures/#{input}")
   vehicles = Map.instance.vehicles.times.map { Vehicle.new }
 
   loop do
@@ -33,7 +35,7 @@ inputs.each do |input|
     rides.delete best_ride
   end
 
-  output_file = "output/#{input.gsub('.in', '.o')}"
+  output_file = path_nyapa + "output/#{input.gsub('.in', '.o')}"
   File.open(output_file, 'w') do |file|
     vehicles.each do |vehicle|
       vehicle_rides = vehicle.rides.map { |r| r.id }
